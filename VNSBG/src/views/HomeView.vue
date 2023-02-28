@@ -5,12 +5,14 @@ import Footer from '../components/Footer.vue'
 import { mapState } from 'pinia'
 import { useHomeStore } from '../stores/home'
 import { defineComponent } from 'vue';
+import Product from '@/components/Product.vue'
 export default defineComponent({
   name: 'Home',
   components: {
     Header,
     Navigation,
-    Footer
+    Footer,
+    Product
   },
   computed: {
     ...mapState(useHomeStore, {
@@ -18,7 +20,9 @@ export default defineComponent({
       setPage: 'setPage',
       listDisplayBaby: 'listDisplayBaby',
       getListBaby: 'getListBaby',
-      page: 'page'
+      page: 'page',
+      listBabyTopReact: 'listBabyTopReact',
+      getListBabyTopReact: 'getListBabyTopReact'
     }),
   },
   data() {
@@ -27,22 +31,23 @@ export default defineComponent({
   },
   methods: {
     pageChange(value: any) {
-       this.setPage(value)
-      },
+      this.setPage(value)
+    },
     reloadPage() {
       if (localStorage.getItem('reloaded')) {
         localStorage.removeItem('reloaded');
-    } else {
+      } else {
         localStorage.setItem('reloaded', '1');
         location.reload();
-    }
+      }
     },
     selectPage(value: number) {
-        return value == this.page
+      return value == this.page
     }
   },
   mounted() {
-    this.getListBaby()
+    this.getListBaby(),
+    this.getListBabyTopReact()
   }
 })
 </script>
@@ -51,57 +56,39 @@ export default defineComponent({
   <div class="container">
     <Header />
     <Navigation />
-    <div class="banner">
-      <a href="#"><img
-          src="https://1.bp.blogspot.com/-iJd0eLfRaqE/YIMzMGF1HRI/AAAAAAAAAPY/3dashLBXrSARgwkyMSyWU06pYmIGx863wCLcBGAsYHQ/w1200-h630-p-k-no-nu/20210424_035030.jpg"
-          alt="gaixinhTQ"></a>
-    </div>
 
-    <article>
+    <div class="top-girl">
+      <div class="banner">
+        <a href="#"><img
+            src="https://1.bp.blogspot.com/-iJd0eLfRaqE/YIMzMGF1HRI/AAAAAAAAAPY/3dashLBXrSARgwkyMSyWU06pYmIGx863wCLcBGAsYHQ/w1200-h630-p-k-no-nu/20210424_035030.jpg"
+            alt="gaixinhTQ"></a>
+      </div>
       <h3>Gái xinh nhất trong tuần</h3>
       <div class="new_list">
         <div v-for="item in listDisplayBaby" class="new_item" :key="item.id">
-          <h4 id="name1">{{ item.description }}</h4>
-          <router-link :to="{ name: 'detail', params: { id: item.id } }">
-            <img id="url1" :src="item.url" :alt="item.description">
-          </router-link>
-          <div id="des1" class="content">
-            <div class="item">
-              <div id="like">
-                <img src="https://png.pngtree.com/element_our/20190602/ourlarge/pngtree-color-smiley-face-expression-image_1410314.jpg" alt="">
-              </div>
-              <div id="price">
-                ${{item.price}}
-              </div>
-              <div id="vote">
-                <img src="https://cdn-icons-png.flaticon.com/512/1601/1601243.png" alt="">
-              </div>
-            </div>
+          <div class="content-product">
+            <Product :NameProduct="item.name" :ImgProductUrl="item.url" :Description="item.description"
+              :TotalLikes="item.vote" :Price="item.price" />
           </div>
         </div>
       </div>
-    </article>
-
-    <article>
+    </div>
+    <div class="top-girl">
       <h3>Nhiều lượt tương tác</h3>
       <div class="new_list">
-        <div v-for="item in listDisplayBaby" class="new_item" :key="item.id">
-          <h4 id="name1">{{ item.description }}</h4>
-          <router-link :to="{ name: 'detail', params: { id: item.id } }">
-            <img id="url1" :src="item.url" :alt="item.description">
-          </router-link>
-          <div id="des1" class="content">
-            ${{item.price}}
+        <div v-for="item in (listBabyTopReact as any)" class="new_item" :key="item.id">
+          <div class="content-product">
+            <Product :NameProduct="item.name" :ImgProductUrl="item.url" :Description="item.description"
+              :TotalLikes="item.vote" :Price="item.price" />
           </div>
         </div>
       </div>
-    </article>
-
+    </div>
     <div class="navigation">
       <div class="flex">
         <ul>
           <div class="items" v-for="n in totalPage">
-            <li :class="{ active: selectPage(n) }" @click="setPage(n)">{{n}}</li>
+            <li :class="{ active: selectPage(n) }" @click="setPage(n)">{{ n }}</li>
           </div>
         </ul>
       </div>
@@ -109,3 +96,45 @@ export default defineComponent({
     <Footer />
   </div>
 </template>
+
+<style>
+.top-girl {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new_list {
+  width: 980px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.new_list .new_item img:hover {
+  transform: rotateY(0deg) scale(1.05);
+}
+
+.content-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new_list .new_item {
+  width: 320px;
+  height: 440px;
+  padding: 2%;
+
+  border: 2px solid #ccc;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.new_list .new_item h4 {
+  font-size: 16px;
+  color: rgb(31, 28, 25);
+}
+</style>

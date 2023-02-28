@@ -3,6 +3,7 @@ import Username from '@/components/UsernameInput.vue'
 import Password from '@/components/PasswordInput.vue'
 import ButtonSignIn from '@/components/ButtonSignIn.vue'
 import Comment from '@/components/Comment.vue'
+import Product from '@/components/Product.vue'
 import { defineComponent } from 'vue';
 export default defineComponent({
     name: 'test',
@@ -10,7 +11,8 @@ export default defineComponent({
         Username,
         Password,
         ButtonSignIn,
-        Comment
+        Comment,
+        Product
     }
 })
 </script>
@@ -29,10 +31,16 @@ export default defineComponent({
         <div class="comment">
             <Comment />
         </div>
+        <div class="tst">
+            <Product />
+        </div>
     </div>
 </template>
 
 <style>
+.tst {
+    margin-top: 30px
+}
 .form {
     display: flex;
     flex-direction: column;
