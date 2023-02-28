@@ -100,49 +100,6 @@ article h3 {
     font-weight: bold;
 }
 
-article .new_list .new_item img {
-    width: 190px;
-    height: 253px;
-    margin: 10px 0;
-}
-
-article .new_list .new_item img:hover {
-    transform: rotateY(0deg) scale(1.05);
-} 
-
-article .new_list .new_item .content .item {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-article .new_list .new_item .content .item #price {
-    font-size: 20px;
-}
-
-article .new_list .new_item .content .item img {
-    width: 19px;
-    height: 25px;
-}
-
-article .new_list {
-    display: flex;
-}
-
-article .new_list .new_item {
-    width: 33%;
-    padding: 2%;
-    float: left;
-    border: 2px solid #ccc;
-    margin-right: 2%;
-    text-align: center;
-}
-
-article .new_list .new_item h4 {
-    font-size: 16px;
-    color: rgb(31, 28, 25);
-}
-
 /* ------------------------ */
 
 .navigation {

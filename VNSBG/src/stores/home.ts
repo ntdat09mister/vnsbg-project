@@ -6,6 +6,7 @@ export const useHomeStore = defineStore('home', () => {
     const listBaby = ref([])
     const limit = ref(3)
     const page = ref(1)
+    const listBabyTopReact = ref([])
 
     function getListBaby() {
         return new Promise((resolve) => {
@@ -13,6 +14,17 @@ export const useHomeStore = defineStore('home', () => {
             .then(response => {
                 const { data } = response
                 listBaby.value = data
+                resolve(null)
+            })
+        })
+    }
+
+    function getListBabyTopReact() {
+        return new Promise((resolve) => {
+            axios.get('http://localhost:8080/topGirlReact', {})
+            .then(response => {
+                const { data } = response
+                listBabyTopReact.value = data
                 resolve(null)
             })
         })
@@ -36,5 +48,5 @@ export const useHomeStore = defineStore('home', () => {
         return listBaby.value.filter((baby: any) => baby.id === id)[0] 
     }
 
-    return { listDisplayBaby, getListBaby, setPage, total, totalPage, getCurrentBaby, page }
+    return { listDisplayBaby, getListBaby, setPage, total, totalPage, getCurrentBaby, page, listBabyTopReact, getListBabyTopReact}
 })
