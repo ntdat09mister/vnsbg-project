@@ -68,7 +68,7 @@ export default defineComponent({
         <div v-for="item in listDisplayBaby" class="new_item" :key="item.id">
           <div class="content-product">
             <Product :NameProduct="item.name" :ImgProductUrl="item.url" :Description="item.description"
-              :TotalLikes="item.vote" :Price="item.price" />
+              :TotalLikes="item.vote" :Price="item.price" :Id="item.id"/>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@ export default defineComponent({
         <div v-for="item in (listBabyTopReact as any)" class="new_item" :key="item.id">
           <div class="content-product">
             <Product :NameProduct="item.name" :ImgProductUrl="item.url" :Description="item.description"
-              :TotalLikes="item.vote" :Price="item.price" />
+              :TotalLikes="item.vote" :Price="item.price" :Id="item.id"/>
           </div>
         </div>
       </div>

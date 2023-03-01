@@ -161,46 +161,6 @@ article h3 {
 
 /* ------------------------ */
 
-.baby-detail {
-    width: 980px;
-    float: right;
-}
-
-.baby-detail .all-img {
-    display: flex;
-}
-
-.baby-detail .image-des {
-    width: 490px;
-    height: 590px;
-}
-
-.baby-detail .img-list {
-    width: 490px;
-    height: 590px;
-}
-
-.baby-detail .image-des img {
-    width: 480px;
-    height: 530px;
-}
-
-.baby-detail .img-list .prod-list img {
-    width: 235px;
-    height: 260px;
-    float: left;
-    margin-bottom: 10px;
-    margin-right: 10px;
-}
-
-.baby-detail .personal-data {
-    display: flex;
-    justify-content:space-around;
-    color: aliceblue;
-}
-
-.baby-detail .personal-data 
-
 .footer {
     margin-top: 0px;
     float: right;

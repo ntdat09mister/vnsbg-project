@@ -2,6 +2,7 @@
 import { defineComponent } from 'vue';
 import IconLike from '@/components/icons/IconLike.vue'
 import IconPrice from './icons/IconPrice.vue';
+import router from '@/router';
 
 export default defineComponent({
     props: {
@@ -9,11 +10,17 @@ export default defineComponent({
         ImgProductUrl: { type: String, require: true },
         Description: { type: String, require: true },
         TotalLikes: { type: String, requrie: true },
-        Price: { type: String, require: true }
+        Price: { type: String, require: true },
+        Id: { type: Number, require: true }
     },
     components: {
         IconLike,
         IconPrice
+    },
+    methods: {
+        handleClick(id: number) {
+            router.push({ name: 'detail', params: { id: Number(id) } })
+        }
     }
 })
 </script>
@@ -21,7 +28,7 @@ export default defineComponent({
 <template>
     <div class="container-product">
         <span id="container-product-span1">{{ NameProduct }}</span>
-        <img :src="ImgProductUrl" alt="">
+        <a href="" @click="handleClick(Number(Id))"><img :src="ImgProductUrl" alt=""></a>
         <span id="container-product-span2">{{ Description }}</span>
         <div class="like-price">
             <div class="likes-price">
