@@ -8,12 +8,10 @@ export default defineComponent ({
             loggedCustomer: 'loggedCustomer'
         }),
         wellcomeCustomer() {
-            var currentDate = new Date()
-            var getWeekdays = currentDate.getDay.toString
             if (this.loggedCustomer != null) {
                 return 'Xin chào ' + this.loggedCustomer + '! Chúc một ngày tốt lành 😘'
             } else {
-                return 'Chúc một ngày tốt lành 😘' + getWeekdays
+                return 'Chúc một ngày tốt lành 😘'
             }
         }
 

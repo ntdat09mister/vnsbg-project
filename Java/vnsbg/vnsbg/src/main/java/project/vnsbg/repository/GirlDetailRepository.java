@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import project.vnsbg.entity.GirlDetail;
+import project.vnsbg.entity.dto.BabyDetailDto;
 import project.vnsbg.entity.dto.GirlDetailDto;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 @Repository
 public interface GirlDetailRepository extends JpaRepository<GirlDetail, Long> {
     @Query(value = "exec findGirlDetailByGirlId @girlId = :girlId", nativeQuery = true)
-    GirlDetail findByGirlId(String girlId);
+    BabyDetailDto findByGirlId(String girlId);
 
     @Query(value = "exec fillterGirlDetail @PageNumber = ?1, @PageSize = ?2, @SortBy = ?3, @SortDirection = ?4, @marial_status = ?5, " +
             "@nationality = ?6, @height_start = ?7, @height_end = ?8, @weight_start = ?9, @weight_end = ?10, @round_ms1_start = ?11, " +

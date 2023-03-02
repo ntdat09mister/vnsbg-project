@@ -1,7 +1,7 @@
 package project.vnsbg.entity.dto;
 
 public interface GirlDtoHomePage {
-    String getId();
+    Long getId();
     String getName();
     String getUrl();
     String getDescription();

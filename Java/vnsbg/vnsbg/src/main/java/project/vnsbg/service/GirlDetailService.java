@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.vnsbg.entity.GirlDetail;
 import project.vnsbg.entity.GirlDetailImgs;
+import project.vnsbg.entity.dto.BabyDetailDto;
 import project.vnsbg.entity.dto.GirlDetailDto;
 import project.vnsbg.repository.GirlDetailImgsRepository;
 import project.vnsbg.repository.GirlDetailRepository;
@@ -25,7 +26,7 @@ public class GirlDetailService {
         return girlDetailImgsRepository.findGirlDetailImgsProcedure(girlId);
     }
 
-    public GirlDetail getGirlDetails(String girlId) {
+    public BabyDetailDto getGirlDetails(String girlId) {
         return girlDetailRepository.findByGirlId(girlId);
     }
 

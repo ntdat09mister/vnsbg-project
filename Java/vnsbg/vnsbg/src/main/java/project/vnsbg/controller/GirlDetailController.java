@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import project.vnsbg.entity.GirlDetail;
 import project.vnsbg.entity.GirlDetailImgs;
+import project.vnsbg.entity.dto.BabyDetailDto;
 import project.vnsbg.entity.dto.GirlDetailDto;
 import project.vnsbg.service.GirlDetailService;
 
@@ -22,7 +23,7 @@ public class GirlDetailController {
     }
 
     @GetMapping("detail")
-    public GirlDetail getGirlDetails(@RequestParam String girlId) {
+    public BabyDetailDto getGirlDetails(@RequestParam String girlId) {
         return girlDetailService.getGirlDetails(girlId);
     }
 
