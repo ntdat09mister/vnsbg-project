@@ -67,6 +67,7 @@ export const cart = defineStore('cart', () => {
         totalPage,
         setPage,
         getCurrentBaby,
-        page
+        page,
+        listCartItems
     }
 })

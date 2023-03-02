@@ -181,6 +181,10 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background-color: #f1d6b0;
+}
+
 .social {
     margin-top: 30px;
     display: flex;

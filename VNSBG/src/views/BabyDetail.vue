@@ -7,6 +7,10 @@ import { mapActions, mapState } from 'pinia'
 import { useHomeStore } from '../stores/home'
 import { babyDetailStore } from '../stores/baby-detail'
 import { defineComponent } from 'vue';
+import { promoStore } from '@/stores/promo'
+import { cart } from '@/stores/cart'
+import { userStore } from '@/stores/user'
+import router from '@/router'
 export default defineComponent({
     name: 'BabyDetail',
     components: {
@@ -17,10 +21,14 @@ export default defineComponent({
     },
     data() {
         return {
-            baby: { url: '', description: '' }
+            baby: { url: '', description: '' },
+            soldOut: "1"
         }
     },
     computed: {
+        ...mapState(userStore, {
+            customerId: 'customerId'
+        }),
         ...mapState(useHomeStore, {
             getCurrentBaby: 'getCurrentBaby',
             getListBaby: 'getListBaby'
@@ -30,23 +38,35 @@ export default defineComponent({
             babyDes: 'babyDes',
             desData: 'desData'
         }),
+        ...mapState(promoStore, {
+            listPromoes: 'listPromoes',
+            getListPromoes: 'getListPromoes'
+        }),
         marialStatusFormat() {
             if ((this.desData as any).marialStatus == 0) {
-                return 'Married'
+                return 'Đã chồng con'
             } else {
-                return "Not married"
+                return "Chưa lập gia đình"
             }
         },
         nationalityFormat() {
             if ((this.desData as any).nationality == 0) {
-                return 'Vietnam'
+                return 'Việt Nam 100%'
             } else {
-                return 'Foreign'
+                return 'Gái tây ợ'
             }
         }
     },
     methods: {
-        ...mapActions(babyDetailStore, ['getListBabyDetail', 'getDescription', 'getDesData'])
+        ...mapActions(babyDetailStore, ['getListBabyDetail', 'getDescription', 'getDesData']),
+        ...mapActions(cart,['addToCart']),
+        handleAddToCart(customerId: String, id: String, price: String) {
+            if(this.customerId?.length != 0) {
+                this.addToCart(String(customerId), String(id), String(price))
+            }
+            router.push({name:'cart'})
+            alert("Đã thêm em gái này vào giỏ hàng!" )
+        }
     },
     created() {
         const { id } = this.$route.params
@@ -56,6 +76,9 @@ export default defineComponent({
         this.getListBabyDetail(Number(id))
         this.getDescription(Number(id))
         this.getDesData(Number(id))
+    },
+    mounted() {
+        this.getListPromoes()
     }
 })
 </script>
@@ -86,34 +109,20 @@ export default defineComponent({
                         <span>Số đo vòng 3: {{ (desData as any).roundMs3 }}cm</span>
                     </div>
                     <div class="button-action">
-                        <img src="https://media3.giphy.com/media/B3ltrgdWWMmxpUOu1m/giphy.gif?cid=ecf05e473vifk6q1x02njrsm1p1e2s29duxj7ccl84zv50xk&rid=giphy.gif&ct=g" >
-                        <button id="abc123">
-                            Thêm vào giỏ hàng
+                        <img
+                            src="https://media3.giphy.com/media/B3ltrgdWWMmxpUOu1m/giphy.gif?cid=ecf05e473vifk6q1x02njrsm1p1e2s29duxj7ccl84zv50xk&rid=giphy.gif&ct=g">
+                        <button id="abc123" @click="handleAddToCart(String(customerId), (desData as any).id, (desData as any).price)">
+                            Book ngay nào
                         </button>
                     </div>
                 </div>
                 <div class="promo">
                     <div class="promo-action">
-                        <span>Ưu đãi khủng</span>
+                        <span>Ưu đãi khủng từ VNSBG</span>
                     </div>
-                    <!-- <div class="promo-detail">
-                        <span>Giảm thêm tới 1% cho thành viên VSBG member</span>
-                        <br>
-                        <span>Bảo vệ sản phẩm toàn diện với dịch vụ bảo hành mở rộng</span>
-                        <br>
-                        <span>Giảm thêm 5% tối đa 50$ khi thanh toán qua Kredivo</span>
-                        <br>
-                        <span>Giảm thêm tới 100$ cho đơn hàng từ 2000$ khi thanh toán qua VNPAY</span>
-                        <br>
-                        <span>Giảm thêm 4% (tối đa 25$) qua ví Moca cho đơn hàng từ 500$</span>
-                        <br>
-                        <span>Mở thẻ tín dụng Citibank - Nhận voucher giảm đến 100$</span>
-                        <br>
-                        <span>Giảm thêm 60$ qua thẻ tín dụng JCB cho đơn hàng từ 5000$</span>
-                        <br>
-                        <span>Thu cũ đổi mới: Giá thu cao - Thủ tục nhanh chóng - Trợ giá tốt nhất</span>
-                    </div> -->
-                    <PromoDetail SpanPromoDetail="aaa" />
+                    <div v-for="item in listPromoes">
+                        <PromoDetail :SpanPromoDetail="(item as any).promoDetail" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -154,6 +163,9 @@ export default defineComponent({
     height: 182px;
 }
 
+.baby-detail .all-img .prod-list-bonus img:hover {
+    transform: rotateY(0deg) scale(1.25);
+}
 
 .personal-data-action-promo {
     width: 580px;
@@ -204,6 +216,10 @@ export default defineComponent({
     margin: 0;
 }
 
+.button-action #abc123:hover {
+    background-color: bisque;
+}
+
 .promo {
     width: 550px;
     height: 373px;
@@ -215,4 +231,21 @@ export default defineComponent({
     background-color: #d1d5db;
 }
 
+.promo-action span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height, or 150% */
+
+    letter-spacing: 0.1px;
+
+    color: #171725;
+
+}
+
+#avatarBabyDetail:hover {
+    transform: rotateY(0deg) scale(1.25);
+}
 </style>
