@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="w-980px h-100px">
         <a href="#">
             <img class="headerImg" src="https://s1.media.ngoisao.vn/news/2022/08/05/my-nha-bikini-fb-ngoisaovn-w1200-h720.jpg"
                 alt="gaixinh">

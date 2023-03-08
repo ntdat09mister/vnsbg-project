@@ -18,7 +18,6 @@ header {
 .container {
     width: 980px;
     margin: 0 auto;
-    
 }
 
 header .headerImg {
@@ -36,7 +35,6 @@ header .headerImg {
     margin-bottom: 5px;
     position: relative;
     border-radius: 10px;
-
 }
 
 .navMenu {

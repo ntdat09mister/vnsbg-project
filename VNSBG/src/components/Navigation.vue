@@ -27,7 +27,15 @@ export default defineComponent ({
     },
     data() {
         return {
-            optionProfile: '-1'
+            optionProfile: '-1',
+            listOptionsMenu: [
+                { id: 1, text: 'Trang chủ'},
+                { id: 2, text: 'Gái xinh' },
+                { id: 3, text: 'Tuyển chọn' },
+                { id: 4, text: 'Tìm kiếm'},
+                { id: 5, text: 'Giỏ hàng' },
+                { id: 6, text: 'Người dùng' }
+            ]
         }
     },
     methods: {

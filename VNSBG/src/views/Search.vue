@@ -82,7 +82,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="container-fillter">
+    <div class="container-fillter w-980px" style="margin: 0 auto;">
         <Header />
         <Navigation />
         <div class="container-search">
