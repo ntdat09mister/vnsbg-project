@@ -53,7 +53,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="container">
+  <div class="">
     <Header />
     <Navigation />
 

@@ -19,7 +19,7 @@
 <style>
 header {
     width: 1900px;
-    height: 100px;
+    height: 150px;
 }
 
 header img {
