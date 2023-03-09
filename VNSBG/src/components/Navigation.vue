@@ -88,27 +88,27 @@ export default defineComponent({
 
 <template>
     <div class="flex justify-center items-center">
-        <div class="option-menu" @click="routerView('home')">
+        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('home')">
             <IconHome />
             <span>Trang chủ</span>
         </div>
-        <div class="option-menu" @click="routerView('home')">
+        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('home')">
             <IconGirl />
             <span>Gái xinh</span>
         </div>
-        <div class="option-menu" @click="routerView('home')">
+        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('home')">
             <IconBra />
             <span>Tuyển chọn</span>
         </div>
-        <div class="option-menu" @click="routerView('home')">
+        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('home')">
             <IconSell />
             <span>Mua bán</span>
         </div>
-        <div class="option-menu" @click="routerView('search')">
+        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('search')">
             <IconSearch />
             <span>Tìm kiếm</span>
         </div>
-        <div class="option-menu" @click="routerView('cart')">
+        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('cart')">
             <IconCart />
             <span>Giỏ hàng</span>
         </div>
@@ -130,7 +130,7 @@ export default defineComponent({
             </div>
         </template>
         <template v-if="loggedCustomer == null">
-            <div class="option-menu" @click="routerView('member')">
+            <div @click="routerView('member')">
                 <IconUser />
                 <span>Người dùng</span>
             </div>
@@ -147,9 +147,12 @@ export default defineComponent({
 </style>
 
 <style>
+.option-menu-cart {
+    width: 120px;
+    height: 70px;
+}
 .selectUser {
-    background-color: #12254e;
-    color: #f6f4e6;
+    color: #000000;
     padding: 0px;
     width: 168px;
     border: none;
@@ -186,17 +189,9 @@ export default defineComponent({
 }
 
 #avatarIcon {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-}
-
-#avatarIcon:hover {
-    transform: rotateY(0deg) scale(1.5);
-}
-
-.selectUser:hover {
-    color: rgb(255, 255, 253);
-    transform: rotateY(0deg) scale(1.01);
+    cursor: pointer;
 }
 </style>

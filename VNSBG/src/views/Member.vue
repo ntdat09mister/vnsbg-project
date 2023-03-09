@@ -32,13 +32,12 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="container">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <div class="flex flex-col justify-between items-center member-container">
         <Header />
-        <Navigation />
-        <div class="login-form">
+        <div class="nav-member">
+            <Navigation />
+        </div>
+        <div class="flex justify-around login-from">
             <div class="background">
                 <div class="shape"></div>
                 <div class="shape"></div>
@@ -71,12 +70,16 @@ export default defineComponent({
     box-sizing: border-box;
 }
 
-.login-form {
+
+
+.nav-member {
+    width: 770px;
+}
+
+.login-from {
     background: #ffffff;
-    width: 980px;
+    width: 1180px;
     height: 680px;
-    margin-bottom: 20px;
-    border-radius: 10px;
 }
 
 .background {
@@ -86,7 +89,7 @@ export default defineComponent({
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 50%;
+    top: 57%;
     background-color: #080710;
     border-radius: 10px;
 }
@@ -121,7 +124,7 @@ form {
     background-color: rgba(255, 255, 255, 0.13);
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 50%;
+    top: 57%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);

@@ -6,12 +6,14 @@ import { mapActions, mapState } from 'pinia';
 import { defineComponent } from 'vue';
 import { cart } from '../stores/cart'
 import { userStore } from '@/stores/user'
+import IconDeleteItemCart from '@/components/icons/IconDeleteCart.vue'
 export default defineComponent({
     name: 'Cart',
     components: {
         Header,
         Navigation,
-        Footer
+        Footer,
+        IconDeleteItemCart
     },
     computed: {
         ...mapState(cart, {
@@ -42,55 +44,63 @@ export default defineComponent({
         selectPage(value: number) {
             return value == this.page
         }
+    },
+    data() {
+        return {
+            optionsMenu: [
+                { id: 1, text: "Mã đơn hàng" },
+                { id: 2, text: "Sản phẩm" },
+                { id: 3, text: "Tên" },
+                { id: 4, text: "Giá" },
+                { id: 5, text: "Ngày giao dịch" },
+                { id: 6, text: "Xóa" }
+            ]
+        }
     }
 })
 </script>
 
 <template>
-    <div class="container-fillter">
+    <div class="flex flex-col justify-center items-center">
         <Header />
         <Navigation />
-        <div class="listing-item-information">
-            <div class="menu-cart-page">
-                <span>Mã đơn hàng</span>
-                <span>Sản phẩm</span>
-                <span>Tên</span>
-                <span>Giá</span>
-                <span>Ngày giao dịch</span>
-                <span>Xóa</span>
-            </div>
-            <div v-for="item in (listingCart as any)" class="listing-item" :key="item.id">
-
-                <div class="code-orders">
-                    {{ item.cartItemId }}
+        <div class="flex flex-row justify-around list-cart">
+            <div class="flex flex-row justify-around" v-for="option in optionsMenu" :key="option.id">
+                <div>
+                    <span class="flex flex-row justify-around items-center spanColCart">{{ option.text }}</span>
                 </div>
-                <div class="product-img">
+            </div>
+        </div>
+        <div v-for="item in (listingCart as any)" class="flex flex-row justify-around items-center list-cart"
+            :key="item.id">
+            <div class="flex border-content-cart">
+                <div>
+                    <span class="flex flex-row justify-around items-center spanColCartvalue">{{ item.cartItemId }}</span>
+                </div>
+                <div class="flex flex-row justify-around items-center spanColCartvalue product-img">
                     <router-link :to="{ name: 'detail', params: { id: item.id } }">
                         <img :src="item.url" alt="">
                     </router-link>
-
                 </div>
-                <div class="product-name">
-                    {{ item.name }}
+                <div>
+                    <span class="flex flex-row justify-around items-center spanColCartvalue">{{ item.name }}</span>
                 </div>
-                <div class="product-price">
-                    {{ item.price }}
+                <div>
+                    <span class="flex flex-row justify-around items-center spanColCartvalue">{{ item.price }}</span>
                 </div>
-                <div class="sales-date">
-                    {{ item.salesDate }}
+                <div>
+                    <span class="flex flex-row justify-around items-center spanColCartvalue">{{ item.salesDate }}</span>
                 </div>
-                <div class="deleteItem" @click="deleteItemFromCart(item.cartItemId)">
+                <div class="flex flex-row justify-around items-center spanColCartvalue"
+                    @click="deleteItemFromCart(item.cartItemId)">
                     <a href="">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" alt="">
+                        <IconDeleteItemCart />
                     </a>
                 </div>
-
             </div>
-            <div class="total-payment">
-                <h3>Tổng số tiền phải trả: {{ totalPayment }}</h3>
-            </div>
-            <div class="information-user">
-            </div>
+        </div>
+        <div class="total-payment">
+            <h3>Tổng số tiền phải trả: {{ totalPayment }}</h3>
         </div>
         <div class="navigation">
             <div class="flex">
@@ -106,29 +116,33 @@ export default defineComponent({
 </template>
 
 <style>
-.listing-item-information {
-    width: 980px;
-    display: flex;
-    flex-direction: column;
+.border-content-cart {
+    border: 3px solid #F1F1F5;
+    border-radius: 10px;
 }
 
-.menu-cart-page {
-    width: 900px;
+.spanColCart {
+    width: 179px;
+    height: 33px;
+    color: aliceblue;
+    background-color: rgb(0, 0, 0);
+}
+
+.spanColCartvalue {
+    width: 179px;
     height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 20px;
 }
 
-.listing-item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.list-cart {
+    width: 1078px;
+    margin-bottom: 10px;
 }
 
-.listing-item img {
+.list-cart-value {
+    width: 1000px;
+}
+
+.product-img img {
     width: 50px;
     height: 50px;
-}
-</style>
+}</style>

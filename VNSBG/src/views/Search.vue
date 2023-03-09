@@ -237,7 +237,7 @@ export default defineComponent({
                     </div>
                 </article>
             </template>
-            <div class="navigation">
+            <div class="navigation w-110">
                 <div class="flex">
                     <ul>
                         <div class="items" v-for="n in totalPage">

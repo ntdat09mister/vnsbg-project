@@ -47,39 +47,39 @@ export default defineComponent({
   },
   mounted() {
     this.getListBaby(),
-    this.getListBabyTopReact()
+      this.getListBabyTopReact()
   }
 })
 </script>
 
 <template>
-  <div class="">
+  <div class="flex flex-col justify-between items-center">
     <Header />
     <Navigation />
 
-    <div class="top-girl">
+    <div class="flex flex-col justify-between items-center">
       <div class="banner">
         <a href="#"><img
             src="https://1.bp.blogspot.com/-iJd0eLfRaqE/YIMzMGF1HRI/AAAAAAAAAPY/3dashLBXrSARgwkyMSyWU06pYmIGx863wCLcBGAsYHQ/w1200-h630-p-k-no-nu/20210424_035030.jpg"
             alt="gaixinhTQ"></a>
       </div>
       <h3>Gái xinh nhất trong tuần</h3>
-      <div class="new_list">
-        <div v-for="item in listDisplayBaby" class="new_item" :key="item.id">
+      <div class="w-[980px] h-[500] flex flex-row items-center">
+        <div v-for="item in listDisplayBaby" class="w-[320px] h-[440px] text-center new_item" :key="item.id">
           <div class="content-product">
             <Product :NameProduct="item.name" :ImgProductUrl="item.url" :Description="item.description"
-              :TotalLikes="item.vote" :Price="item.price" :Id="item.id"/>
+              :TotalLikes="item.vote" :Price="item.price" :Id="item.id" />
           </div>
         </div>
       </div>
     </div>
-    <div class="top-girl">
+    <div class="flex flex-col justify-between items-center">
       <h3>Nhiều lượt tương tác</h3>
-      <div class="new_list">
-        <div v-for="item in (listBabyTopReact as any)" class="new_item" :key="item.id">
+      <div class="w-[980px] h-[500] flex flex-row items-center">
+        <div v-for="item in (listBabyTopReact as any)" class="w-[320px] h-[440px] text-center new_item" :key="item.id">
           <div class="content-product">
             <Product :NameProduct="item.name" :ImgProductUrl="item.url" :Description="item.description"
-              :TotalLikes="item.vote" :Price="item.price" :Id="item.id"/>
+              :TotalLikes="item.vote" :Price="item.price" :Id="item.id" />
           </div>
         </div>
       </div>
@@ -98,13 +98,6 @@ export default defineComponent({
 </template>
 
 <style>
-.top-girl {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .new_list {
   width: 980px;
   height: 500px;
@@ -123,14 +116,10 @@ export default defineComponent({
   align-items: center;
 }
 
-.new_list .new_item {
-  width: 320px;
-  height: 440px;
+.new_item {
   padding: 2%;
-
   border: 2px solid #ccc;
   margin-right: 5px;
-  text-align: center;
 }
 
 .new_list .new_item h4 {

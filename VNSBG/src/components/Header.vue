@@ -12,7 +12,6 @@
                 alt="gaixinh">
             <img class=" " src="https://i0.wp.com/bloggiaidap.com/wp-content/uploads/2022/02/Me-man-voi-bo-anh-gai-xinh-nguc-khung-mac.jpg?fit=1024%2C716&ssl=1"
                 alt="gaixinh">
-
     </header>
 </template>
 
