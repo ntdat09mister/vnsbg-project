@@ -88,7 +88,7 @@ export default defineComponent({
 
 <template>
     <div class="flex justify-center items-center">
-        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('home')">
+        <div class="flex justify-center flex-col items-center option-menu-cart cursor-pointer" @click="routerView('home')">
             <IconHome />
             <span>Trang chủ</span>
         </div>
@@ -104,11 +104,11 @@ export default defineComponent({
             <IconSell />
             <span>Mua bán</span>
         </div>
-        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('search')">
+        <div class="flex justify-center flex-col items-center option-menu-cart cursor-pointer" @click="routerView('search')">
             <IconSearch />
             <span>Tìm kiếm</span>
         </div>
-        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('cart')">
+        <div class="flex justify-center flex-col items-center option-menu-cart cursor-pointer" @click="routerView('cart')">
             <IconCart />
             <span>Giỏ hàng</span>
         </div>
@@ -122,15 +122,15 @@ export default defineComponent({
                 </template>
             </div>
             <div class="text-span" :class="{ activeNav: isActiveNavigation('member') }">
-                <select class="selectUser" v-model="optionProfile" @change="selectProfile()">
-                    <option value="-1">{{ customerIdentification }}</option>
-                    <option value="1">Thông tin tài khoản</option>
-                    <option value="2">Đăng xuất</option>
+                <select class="selectUser cursor-pointer" v-model="optionProfile" @change="selectProfile()">
+                    <option class="cursor-pointer" value="-1">{{ customerIdentification }}</option>
+                    <option class="cursor-pointer" value="1">Thông tin tài khoản</option>
+                    <option class="cursor-pointer" value="2">Đăng xuất</option>
                 </select>
             </div>
         </template>
         <template v-if="loggedCustomer == null">
-            <div @click="routerView('member')">
+            <div class="flex justify-center flex-col items-center option-menu-cart cursor-pointer" @click="routerView('member')">
                 <IconUser />
                 <span>Người dùng</span>
             </div>

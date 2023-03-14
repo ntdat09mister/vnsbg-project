@@ -34,9 +34,7 @@ export default defineComponent({
 <template>
     <div class="flex flex-col justify-between items-center member-container">
         <Header />
-        <div class="nav-member">
-            <Navigation />
-        </div>
+        <Navigation />
         <div class="flex justify-around login-from">
             <div class="background">
                 <div class="shape"></div>
@@ -62,20 +60,6 @@ export default defineComponent({
     </div>
 </template>
 <style media="screen">
-*,
-*:before,
-*:after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-
-
-.nav-member {
-    width: 770px;
-}
-
 .login-from {
     background: #ffffff;
     width: 1180px;

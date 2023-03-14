@@ -86,72 +86,100 @@ export default defineComponent({
         <Header />
         <Navigation />
         <div class="container-search">
-            <div class="menu-fillter">
-                <div class="option-menu">
-                    <label class="labelFilter" for="nationality">Quốc gia </label>
-                    <select class="selectFilter" name="" id="nationality" v-model="nationality"
+            <div class="w-[980px] h-[80px] flex justify-center items-center justify-around">
+                <div class="flex flex-col justify-center items-center w-[110px] h-[80px]">
+                    <div class="h-[40px] flex justify-center items-center">
+                        <label class="labelFilter" for="nationality">Quốc gia </label>
+                    </div>
+                    <div class="h-[40px] flex justify-center items-center">
+                        <select class="bg-red-50 w-[80px] h-[30px] rounded-[5px]" name="" id="nationality" v-model="nationality"
                         @change="selectFillterBabies()">
                         <option value="-1">Tất cả</option>
                         <option value="0">Gái Việt</option>
                         <option value="1">Gái Tây</option>
                     </select>
+                    </div>
                 </div>
-                <div class="option-menu">
-                    <label class="labelFilter" for="marial-status">Hôn nhân </label>
-                    <select class="selectFilter" name="" id="marial-status" v-model="marialStatus"
+                <div class="flex flex-col justify-center items-center w-[110px] h-[80px]">
+                    <div class="h-[40px] flex justify-center items-center">
+                        <label class="labelFilter" for="marial-status">Hôn nhân </label>
+                    </div>
+                    <div class="h-[40px] flex justify-center items-center">
+                        <select class="bg-red-50 w-[80px] h-[30px] rounded-[5px]" name="" id="marial-status" v-model="marialStatus"
                         @change="selectFillterBabies()">
                         <option value="-1">Tất cả</option>
                         <option value="0">Chưa có GĐ</option>
                         <option value="1">Đã có GĐ</option>
                     </select>
+                    </div>
                 </div>
-                <div class="option-menu">
-                    <label class="labelFilter" for="height">Chiều cao </label>
-                    <select class="selectFilter" name="" id="height" v-model="heightStart" @change="selectFillterBabies()">
-                        <option value="-1">Tất cả</option>
-                        <option value="150">150cm -> 165cm</option>
-                        <option value="165">165cm -> 175cm</option>
-                        <option value="175">175cm trở lên</option>
-                    </select>
+                <div class="flex flex-col justify-center items-center w-[110px] h-[80px]">
+                    <div class="h-[40px] flex justify-center items-center">
+                        <label class="labelFilter" for="height">Chiều cao </label>
+                    </div>
+                    <div class="h-[40px] flex justify-center items-center">
+                        <select class="bg-red-50 w-[80px] h-[30px] rounded-[5px]" name="" id="height" v-model="heightStart" @change="selectFillterBabies()">
+                            <option value="-1">Tất cả</option>
+                            <option value="150">150cm -> 165cm</option>
+                            <option value="165">165cm -> 175cm</option>
+                            <option value="175">175cm trở lên</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="option-menu">
-                    <label class="labelFilter" for="weight">Cân nặng </label>
-                    <select class="selectFilter" name="" id="weight" v-model="weightStart" @change="selectFillterBabies()">
-                        <option value="-1">Tất cả</option>
-                        <option value="40">40kg -> </option>
-                        <option value="50">50kg -> </option>
-                        <option value="55">55kg -></option>
-                    </select>
+                <div class="flex flex-col justify-center items-center w-[110px] h-[80px]">
+                    <div class="h-[40px] flex justify-center items-center">
+                        <label class="labelFilter" for="weight">Cân nặng </label>
+                    </div>
+                    <div class="h-[40px] flex justify-center items-center">
+                        <select class="bg-red-50 w-[80px] h-[30px] rounded-[5px]" name="" id="weight" v-model="weightStart" @change="selectFillterBabies()">
+                            <option value="-1">Tất cả</option>
+                            <option value="40">40kg -> </option>
+                            <option value="50">50kg -> </option>
+                            <option value="55">55kg -></option>
+                        </select>
+                    </div>
                 </div>
-                <div class="option-menu">
-                    <label class="labelFilter" for="round-1">Vòng 1 </label>
-                    <select class="selectFilter" name="" id="round-1" v-model="round1" @change="selectFillterBabies()">
-                        <option value="-1">Tất cả</option>
-                        <option value="80">80cm -> </option>
-                        <option value="85">85cm -> </option>
-                        <option value="90">90cm -></option>
-                    </select>
+                <div class="flex flex-col justify-center items-center w-[110px] h-[80px]">
+                    <div class="h-[40px] flex justify-center items-center">
+                        <label class="labelFilter" for="round-1">Vòng 1 </label>
+                    </div>
+                    <div class="h-[40px] flex justify-center items-center">
+                        <select class="bg-red-50 w-[80px] h-[30px] rounded-[5px]" name="" id="round-1" v-model="round1" @change="selectFillterBabies()">
+                            <option value="-1">Tất cả</option>
+                            <option value="80">80cm -> </option>
+                            <option value="85">85cm -> </option>
+                            <option value="90">90cm -></option>
+                        </select>
+                    </div>
                 </div>
-                <div class="option-menu">
-                    <label class="labelFilter" for="round-2">Vòng 2 </label>
-                    <select class="selectFilter" name="" id="round-2" v-model="round2" @change="selectFillterBabies()">
-                        <option value="-1">Tất cả</option>
-                        <option value="45">45cm -> </option>
-                        <option value="55">55cm -> </option>
-                        <option value="65">65cm -></option>
-                    </select>
+                <div class="flex flex-col justify-center items-center w-[110px] h-[80px]">
+                    <div class="h-[40px] flex justify-center items-center">
+                        <label class="labelFilter" for="round-2">Vòng 2 </label>
+                    </div>
+                    <div class="h-[40px] flex justify-center items-center">
+                        <select class="bg-red-50 w-[80px] h-[30px] rounded-[5px]" name="" id="round-2" v-model="round2" @change="selectFillterBabies()">
+                            <option value="-1">Tất cả</option>
+                            <option value="45">45cm -> </option>
+                            <option value="55">55cm -> </option>
+                            <option value="65">65cm -></option>
+                        </select>
+                    </div>
                 </div>
-                <div class="option-menu">
-                    <label class="labelFilter" for="round-3">Vòng 3 </label>
-                    <select class="selectFilter" name="" id="round-3" v-model="round3" @change="selectFillterBabies()">
-                        <option value="-1">Tất cả</option>
-                        <option value="80">80cm -> </option>
-                        <option value="85">85cm -> </option>
-                        <option value="95">95cm -></option>
-                    </select>
+                <div class="flex flex-col justify-center items-center w-[110px] h-[80px]">
+                    <div class="h-[40px] flex justify-center items-center">
+                        <label class="labelFilter" for="round-3">Vòng 3 </label>
+                    </div>
+                    <div class="h-[40px] flex justify-center items-center">
+                        <select class="bg-red-50 w-[80px] h-[30px] rounded-[5px]" name="" id="round-3" v-model="round3" @change="selectFillterBabies()">
+                            <option value="-1">Tất cả</option>
+                            <option value="80">80cm -> </option>
+                            <option value="85">85cm -> </option>
+                            <option value="95">95cm -></option>
+                        </select>
+                    </div>
                 </div>
-                <div class="option-radio-button">
-                    <div class="radio-button-swtich">
+                <div class="flex flex-col justify-center w-[150px] h-[80px]">
+                    <div class="flex">
                         <label @click="changeShowScreen('list')">
                             <input type="radio" name="radio" value="list" checked />
                             <span>List</span>
@@ -166,13 +194,13 @@ export default defineComponent({
 
             <template v-if="changeScreen == true">
                 <div class="list-fillter" v-for="item in listDisplayFillterGirls" :key="item.girlId">
-                    <div class="item-fillter">
-                        <div class="img-fillter-item">
+                    <div class="w-[980px] flex flex-row justify-between">
+                        <div>
                             <router-link :to="{ name: 'detail', params: { id: item.id } }">
-                                <img id="url1" :src="item.url" :alt="item.description">
+                                <img class="w-[240px] h-[340px]" :src="item.url" :alt="item.description">
                             </router-link>
                         </div>
-                        <div class="detail-girl">
+                        <div class="w-[220px] flex flex-col justify-center">
                             <span>ID: {{ item.girlId }}</span>
                             <span>Tình trạng hôn nhân: {{ item.marialStatus }}</span>
                             <span>Quốc tịch: {{ item.nationality }}</span>
@@ -184,8 +212,8 @@ export default defineComponent({
                             <span>Đánh giá khách hàng: {{ item.ratingVote }}/5</span>
                             <span>Giá: {{ item.price }}</span>
                         </div>
-                        <div class="buy-now-add-to-cart">
-                            <div id="btnAddToCart" class="add-to-cart-icon">
+                        <div class="flex flex-row justify-center items-center w-[400px] h-[412px]">
+                            <div id="btnAddToCart" class="w-[200px] h-[400px] flex flex-col justify-center">
                                 <span class="span-icon-router-cart">Thêm vào giỏ hàng</span>
                                 <div v-if="show(item.girlId)" @click="handleAddToCart(item)">
                                     <IconAddToCart2 />
@@ -194,7 +222,7 @@ export default defineComponent({
                                     <IconOutOfStock />
                                 </div>
                             </div>
-                            <div class="order-icon-span">
+                            <div class="flex flex-col justify-center">
                                 <span class="span-icon-router-cart">Mua ngay</span>
                                 <router-link :to="{ name: 'cart' }" @click="addToCart(customerId, item.girlId, item.price)">
                                     <IconAddToCart />
@@ -211,7 +239,7 @@ export default defineComponent({
                         <div class="box" v-for="item in listDisplayFillterGirls" :key="item.girlId">
                             <router-link :to="{ name: 'detail', params: { id: item.id } }">
                                 <div class="imgBx">
-                                    <img id="url1" :src="item.url" :alt="item.description">
+                                    <img :src="item.url" :alt="item.description">
                                 </div>
                                 <div class="content">
                                     <div class="p-infoUser">
@@ -237,100 +265,19 @@ export default defineComponent({
                     </div>
                 </article>
             </template>
-            <div class="navigation w-110">
-                <div class="flex">
-                    <ul>
-                        <div class="items" v-for="n in totalPage">
-                            <li :class="{ active: selectPage(n) }" @click="setPage(n)">{{ n }}</li>
-                        </div>
-                    </ul>
-                </div>
-            </div>
+        </div>
+        <div>
+            <ul class="flex flex-row nav">
+              <div v-for="n in totalPage">
+                <li class="liPaging flex justify-center items-center cursor-pointer" :class="{ active: selectPage(n) }" @click="setPage(n)">{{ n }}</li>
+              </div>
+            </ul>
         </div>
     </div>
 </template>
-
-<style>
-.menu-fillter {
-    width: 980px;
-    height: 80px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.option-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 110px;
-    height: 80px;
-}
-
-.option-radio-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 150px;
-    height: 80px;
-}
-
-.list-detail-fillter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.item-fillter {
-    width: 980px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.item-fillter img {
-    width: 270px;
-    height: 408px;
-}
-
-.buy-now-add-to-cart {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 400px;
-    height: 412px;
-}
-
-.buy-now-add-to-cart .order-icon {
-    width: 200px;
-    height: 400px;
-}
-
-.buy-now-add-to-cart .add-to-cart-icon {
-    width: 200px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.detail-girl {
-    width: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-</style>
-
 <style lang="scss">
 $primary-color: #00005c; // Change color here. C'mon, try it! 
 $text-color: mix(#000, $primary-color, 64%);
-
-.radio-button-swtich {
-    display: flex;
-}
 
 label {
     cursor: pointer;
@@ -491,16 +438,9 @@ label {
     transform: translateY(0px);
 }
 
-.selectFilter {
-    background-color: #dfe6f5;
-    width: 80px;
-    height: 18px;
-    border-radius: 2px;
-}
-
 .labelFilter {
     font-family: 'Times New Roman', serif;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .span-icon-router-cart {
@@ -514,11 +454,5 @@ label {
     letter-spacing: 0.1px;
 
     color: #171725;
-}
-
-.order-icon-span {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 </style>

@@ -71,8 +71,7 @@ export default defineComponent({
                 </div>
             </div>
         </div>
-        <div v-for="item in (listingCart as any)" class="flex flex-row justify-around items-center list-cart"
-            :key="item.id">
+        <div v-for="item in (listingCart as any)" class="flex flex-row justify-around items-center list-cart" :key="item.id">
             <div class="flex border-content-cart">
                 <div>
                     <span class="flex flex-row justify-around items-center spanColCartvalue">{{ item.cartItemId }}</span>
@@ -91,8 +90,7 @@ export default defineComponent({
                 <div>
                     <span class="flex flex-row justify-around items-center spanColCartvalue">{{ item.salesDate }}</span>
                 </div>
-                <div class="flex flex-row justify-around items-center spanColCartvalue"
-                    @click="deleteItemFromCart(item.cartItemId)">
+                <div class="flex flex-row justify-around items-center spanColCartvalue" @click="deleteItemFromCart(item.cartItemId)">
                     <a href="">
                         <IconDeleteItemCart />
                     </a>
@@ -120,7 +118,6 @@ export default defineComponent({
     border: 3px solid #F1F1F5;
     border-radius: 10px;
 }
-
 .spanColCart {
     width: 179px;
     height: 33px;
@@ -145,4 +142,5 @@ export default defineComponent({
 .product-img img {
     width: 50px;
     height: 50px;
-}</style>
+}
+</style>
