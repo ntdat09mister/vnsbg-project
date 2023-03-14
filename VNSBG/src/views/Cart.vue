@@ -100,15 +100,13 @@ export default defineComponent({
         <div class="total-payment">
             <h3>Tổng số tiền phải trả: {{ totalPayment }}</h3>
         </div>
-        <div class="navigation">
-            <div class="flex">
-                <ul>
-                    <div class="items" v-for="n in totalPage">
-                        <li :class="{ active: selectPage(n) }" @click="setPage(n)">{{ n }}</li>
-                    </div>
-                </ul>
-            </div>
-        </div>
+        <div>
+            <ul class="flex flex-row nav">
+              <div v-for="n in totalPage">
+                <li class="liPaging flex justify-center items-center cursor-pointer" :class="{ active: selectPage(n) }" @click="setPage(n)">{{ n }}</li>
+              </div>
+            </ul>
+          </div>
         <Footer />
     </div>
 </template>

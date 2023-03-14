@@ -194,10 +194,10 @@ export default defineComponent({
 
             <template v-if="changeScreen == true">
                 <div class="list-fillter" v-for="item in listDisplayFillterGirls" :key="item.girlId">
-                    <div class="w-[980px] flex flex-row justify-between">
+                    <div class="w-[980px] flex flex-row justify-between bg-slate-200">
                         <div>
                             <router-link :to="{ name: 'detail', params: { id: item.id } }">
-                                <img class="w-[240px] h-[340px]" :src="item.url" :alt="item.description">
+                                <img class="w-[250px] h-[340px] p-[10px]" :src="item.url" :alt="item.description">
                             </router-link>
                         </div>
                         <div class="w-[220px] flex flex-col justify-center">
