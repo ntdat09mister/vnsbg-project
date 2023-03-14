@@ -10,7 +10,7 @@ import IconSearch from '@/components/icons/IconSearch.vue';
 import IconCart from '@/components/icons/IconCart.vue';
 import IconUser from '@/components/icons/IconUser.vue';
 
-export default defineComponent ({
+export default defineComponent({
     computed: {
         ...mapState(userStore, {
             loggedCustomer: 'loggedCustomer',
@@ -27,7 +27,15 @@ export default defineComponent ({
     },
     data() {
         return {
-            optionProfile: '-1'
+            optionProfile: '-1',
+            listOptionsMenu: [
+                { id: 1, text: 'Trang chủ' },
+                { id: 2, text: 'Gái xinh' },
+                { id: 3, text: 'Tuyển chọn' },
+                { id: 4, text: 'Tìm kiếm' },
+                { id: 5, text: 'Giỏ hàng' },
+                { id: 6, text: 'Người dùng' }
+            ]
         }
     },
     methods: {
@@ -51,12 +59,15 @@ export default defineComponent ({
             }
         },
         checkAvatar() {
-            if(String(this.avatar)?.length < 2) {
+            if (String(this.avatar)?.length < 2) {
                 return false
             }
             else {
                 return true;
             }
+        },
+        routerView(viewName: String) {
+            this.$router.push({ name: String(viewName) })
         }
     },
     components: {
@@ -76,92 +87,55 @@ export default defineComponent ({
 </script>
 
 <template>
-    <div class="menu">
-        <nav class="navMenu">
-                <router-link class="list" :to="{ name: 'home' }">
-                    <div class="icon" :class="{ activeNav: isActiveNavigation('home') }">
-                        <IconHome />
-                    </div>
-                    <div class="text-span" :class="{ activeNav: isActiveNavigation('home') }">
-                        <span>Trang chủ</span>
-                    </div>
-                </router-link>
-
-                <router-link class="list" :to="{ name: 'home' }">
-                    <div class="icon">
-                        <IconGirl />
-                    </div>
-                    <div class="text-span">
-                        <span>Gái xinh</span>
-                    </div>
-                </router-link>
-
-                <router-link class="list" :to="{ name: 'home' }">
-                    <div class="icon">
-                        <IconBra />
-                    </div>
-                    <div class="text-span">
-                        <span>Tuyển chọn</span>
-                    </div>
-                </router-link>
-
-                <router-link class="list" :to="{ name: 'home' }">
-                    <div class="icon">
-                        <IconSell />
-                    </div>
-                    <div class="text-span">
-                        <span>Mua bán</span>
-                    </div>
-                </router-link>
-
-                <router-link class="list" :to="{ name: 'search' }">
-                    <div class="icon" :class="{ activeNav: isActiveNavigation('search') }">
-                        <IconSearch />
-                    </div>
-                    <div class="text-span" :class="{ activeNav: isActiveNavigation('search') }">
-                        <span>Tìm kiếm</span>
-                    </div>
-                </router-link>
-
-                <router-link class="list" :to="{ name: 'cart' }">
-                    <div class="icon" :class="{ activeNav: isActiveNavigation('cart') }">
-                        <IconCart />
-                    </div>
-                    <div class="text-span" :class="{ activeNav: isActiveNavigation('cart') }">
-                        <span>Giỏ hàng</span>
-                    </div>
-                </router-link>
-
-                <template v-if="loggedCustomer != null">
-                    <div class="icon" :class="{ activeNav: isActiveNavigation('member') }">
-                        <template v-if="checkAvatar()">
-                            <img :src="String(avatar)" alt="" id="avatarIcon">
-                        </template>
-                        <template v-else>
-                            <IconUser />
-                        </template>
-                        
-                    </div>
-                    <div class="text-span" :class="{ activeNav: isActiveNavigation('member') }">
-                        <select class="selectUser" v-model="optionProfile" @change="selectProfile()">
-                            <option value="-1">{{ customerIdentification }}</option>
-                            <option value="1">Thông tin tài khoản</option>
-                            <option value="2">Đăng xuất</option>
-                        </select>
-                    </div>
+    <div class="flex justify-center items-center">
+        <div class="flex justify-center flex-col items-center option-menu-cart cursor-pointer" @click="routerView('home')">
+            <IconHome />
+            <span>Trang chủ</span>
+        </div>
+        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('home')">
+            <IconGirl />
+            <span>Gái xinh</span>
+        </div>
+        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('home')">
+            <IconBra />
+            <span>Tuyển chọn</span>
+        </div>
+        <div class="flex justify-center flex-col items-center option-menu-cart" @click="routerView('home')">
+            <IconSell />
+            <span>Mua bán</span>
+        </div>
+        <div class="flex justify-center flex-col items-center option-menu-cart cursor-pointer" @click="routerView('search')">
+            <IconSearch />
+            <span>Tìm kiếm</span>
+        </div>
+        <div class="flex justify-center flex-col items-center option-menu-cart cursor-pointer" @click="routerView('cart')">
+            <IconCart />
+            <span>Giỏ hàng</span>
+        </div>
+        <template v-if="loggedCustomer != null">
+            <div class="icon" :class="{ activeNav: isActiveNavigation('member') }">
+                <template v-if="checkAvatar()">
+                    <img :src="String(avatar)" alt="" id="avatarIcon">
                 </template>
-                <template v-if="loggedCustomer == null">
-                    <router-link class="list" :to="{ name: 'member' }">
-                        <div class="icon" :class="{ activeNav: isActiveNavigation('member') }">
-                            <IconUser />
-                        </div>
-                        <div class="text-span" :class="{ activeNav: isActiveNavigation('member') }">
-                            <span>Người dùng</span>
-                        </div>
-                    </router-link>
+                <template v-else>
+                    <IconUser />
                 </template>
-            <div class="dot"></div>
-        </nav>
+            </div>
+            <div class="text-span" :class="{ activeNav: isActiveNavigation('member') }">
+                <select class="selectUser cursor-pointer" v-model="optionProfile" @change="selectProfile()">
+                    <option class="cursor-pointer" value="-1">{{ customerIdentification }}</option>
+                    <option class="cursor-pointer" value="1">Thông tin tài khoản</option>
+                    <option class="cursor-pointer" value="2">Đăng xuất</option>
+                </select>
+            </div>
+        </template>
+        <template v-if="loggedCustomer == null">
+            <div class="flex justify-center flex-col items-center option-menu-cart cursor-pointer" @click="routerView('member')">
+                <IconUser />
+                <span>Người dùng</span>
+            </div>
+        </template>
+        <div class="dot"></div>
     </div>
 </template>
 
@@ -173,9 +147,12 @@ export default defineComponent ({
 </style>
 
 <style>
+.option-menu-cart {
+    width: 120px;
+    height: 70px;
+}
 .selectUser {
-    background-color: #12254e;
-    color: #f6f4e6;
+    color: #000000;
     padding: 0px;
     width: 168px;
     border: none;
@@ -212,17 +189,9 @@ export default defineComponent ({
 }
 
 #avatarIcon {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-}
-
-#avatarIcon:hover {
-    transform: rotateY(0deg) scale(1.5);
-}
-
-.selectUser:hover {
-    color: rgb(255, 255, 253);
-    transform: rotateY(0deg) scale(1.01);
+    cursor: pointer;
 }
 </style>

@@ -84,21 +84,21 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="container">
+    <div class="flex flex-col justify-center items-center">
         <Header />
         <Navigation />
-        <div class="baby-detail">
-            <div class="all-img">
-                <img id="avatarBabyDetail" :src="baby.url" :alt="baby.description">
-                <div class="prod-list-bonus">
-                    <div v-for="item in moreImages" class="small-img">
-                        <img :src="(item as any).url" :alt="(item as any).description">
+        <div class="w-[980px] h-[750px] flex justify-around flex-row items-center">
+            <div class="w-[380px] h-[750px] flex flex-col justify-between">
+                <img class="w-[375px] h-[370px]" :src="baby.url" :alt="baby.description">
+                <div class="flex flex-wrap justify-around">
+                    <div v-for="item in moreImages">
+                        <img class="w-[182px] h-[182px]" :src="(item as any).url" :alt="(item as any).description">
                     </div>
                 </div>
             </div>
-            <div class="personal-data-action-promo">
-                <div class="personal-data-action">
-                    <div class="personal-data">
+            <div class="w-[580px] h-[750px] flex flex-col">
+                <div class="flex flex-row w-[580px] h-[370px]">
+                    <div class="flex flex-col spanDetail">
                         <span>ID: {{ (desData as any).id }}</span>
                         <span>Tình trạng: {{ marialStatusFormat }}</span>
                         <span>Quốc tịch: {{ nationalityFormat }}</span>
@@ -108,10 +108,10 @@ export default defineComponent({
                         <span>Số đo vòng 2: {{ (desData as any).roundMs2 }}cm</span>
                         <span>Số đo vòng 3: {{ (desData as any).roundMs3 }}cm</span>
                     </div>
-                    <div class="button-action">
-                        <img
+                    <div class="w-[350px] h-[350px] flex flex-col justify-around items-center">
+                        <img class="w-[320px] h-[270px]"
                             src="https://media3.giphy.com/media/B3ltrgdWWMmxpUOu1m/giphy.gif?cid=ecf05e473vifk6q1x02njrsm1p1e2s29duxj7ccl84zv50xk&rid=giphy.gif&ct=g">
-                        <button id="abc123" @click="handleAddToCart(String(customerId), (desData as any).id, (desData as any).price)">
+                        <button id="w-[200px] h-[45px] p-0 m-0" @click="handleAddToCart(String(customerId), (desData as any).id, (desData as any).price)">
                             Book ngay nào
                         </button>
                     </div>
@@ -131,89 +131,13 @@ export default defineComponent({
 </template>
 
 <style>
-.baby-detail {
-    width: 980px;
-    height: 750px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-}
-
-.baby-detail .all-img {
-    width: 380px;
-    height: 750px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.baby-detail .all-img #avatarBabyDetail {
-    width: 375px;
-    height: 370px;
-}
-
-.baby-detail .all-img .prod-list-bonus {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.baby-detail .all-img .prod-list-bonus img {
-    width: 182px;
-    height: 182px;
-}
-
-.baby-detail .all-img .prod-list-bonus img:hover {
-    transform: rotateY(0deg) scale(1.25);
-}
-
-.personal-data-action-promo {
-    width: 580px;
-    height: 750px;
-    display: flex;
-    flex-direction: column;
-}
-
-.personal-data-action {
-    display: flex;
-    flex-direction: row;
-    width: 580px;
-    height: 370px;
-}
-
-.personal-data {
-    display: flex;
-    flex-direction: column;
-}
-
-.personal-data span {
+.spanDetail span {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
     line-height: 42px;
     color: #882d5f;
-}
-
-.button-action {
-    width: 350px;
-    height: 340px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.button-action img {
-    width: 320px;
-    height: 270px;
-}
-
-.button-action #abc123 {
-    width: 200px;
-    height: 45px;
-    padding: 0;
-    margin: 0;
 }
 
 .button-action #abc123:hover {
@@ -243,9 +167,5 @@ export default defineComponent({
 
     color: #171725;
 
-}
-
-#avatarBabyDetail:hover {
-    transform: rotateY(0deg) scale(1.25);
 }
 </style>
