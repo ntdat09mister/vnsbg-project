@@ -60,8 +60,13 @@ export default defineComponent({
             return !this.selectedGirls.includes(value)
         },
         handleAddToCart(item: any) {
-            this.addToCart(this.customerId, item.girlId, item.price)
-            this.addToList(item.girlId)
+            if(this.customerId == null) {
+                alert("Hãy đăng nhập trước")
+                this.$router.push({ name: 'member' })
+            } else {
+                this.addToCart(this.customerId, item.girlId, item.price)
+                this.addToList(item.girlId)
+            }
         },
         selectPage(value: number) {
             return value == this.page
@@ -71,6 +76,14 @@ export default defineComponent({
             }
             if (value == 'grid') {
                 this.changeScreen = false;
+            }
+        },
+        AddToCartHandle(customerId: string, girlId: string, price: string) {
+            if(this.customerId == null) {
+                alert("Hãy đăng nhập trước")
+                this.$router.push({ name: 'member' })
+            } else {
+                this.addToCart(customerId, girlId, price);
             }
         }
 
@@ -82,7 +95,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="flex flex-col justify-center items-center" style="margin: 0 auto;">
+    <div class="flex flex-col justify-center items-center">
         <Header />
         <Navigation />
         <div class="container-search">
@@ -216,7 +229,7 @@ export default defineComponent({
                             <div id="btnAddToCart" class="w-[200px] h-[400px] flex flex-col justify-center">
                                 <span class="span-icon-router-cart">Thêm vào giỏ hàng</span>
                                 <div v-if="show(item.girlId)" @click="handleAddToCart(item)">
-                                    <IconAddToCart2 />
+                                    <IconAddToCart2 class="cursor-pointer"/>
                                 </div>
                                 <div v-else>
                                     <IconOutOfStock />
@@ -224,7 +237,7 @@ export default defineComponent({
                             </div>
                             <div class="flex flex-col justify-center">
                                 <span class="span-icon-router-cart">Mua ngay</span>
-                                <router-link :to="{ name: 'cart' }" @click="addToCart(customerId, item.girlId, item.price)">
+                                <router-link :to="{ name: 'cart' }" @click="AddToCartHandle(String(customerId), item.girlId, item.price)">
                                     <IconAddToCart />
                                 </router-link>
                             </div>

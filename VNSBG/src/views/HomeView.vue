@@ -4,8 +4,13 @@ import Navigation from '../components/Navigation.vue'
 import Footer from '../components/Footer.vue'
 import { mapState } from 'pinia'
 import { useHomeStore } from '../stores/home'
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import Product from '@/components/Product.vue'
+import { truncate } from 'lodash'
+interface PaginationProps {
+  pageSize: number;
+  totalItems: number;
+}
 export default defineComponent({
   name: 'Home',
   components: {
@@ -27,6 +32,7 @@ export default defineComponent({
   },
   data() {
     return {
+      
     }
   },
   methods: {
@@ -48,6 +54,44 @@ export default defineComponent({
   mounted() {
     this.getListBaby(),
       this.getListBabyTopReact()
+  },
+  setup() {
+    // Define reactive variables for pagination
+    const currentPage = ref(1);
+    const pageSize = ref(3);
+    const totalItems = ref(12);
+
+    // Define event handler for page changes
+    const handlePageChange = (newPage: number) => {
+      currentPage.value = newPage;
+      // fetch new data for the new page
+    };
+
+    // Return variables and event handler to be used in template
+    return {
+      currentPage,
+      pageSize,
+      totalItems,
+      handlePageChange,
+    };
+  },
+  props: {
+    pageSize: {
+      type: Number,
+      required: true,
+    },
+    totalItems: {
+      type: Number,
+      required: true,
+    },
+    handlePageChange: {
+      type: Number,
+      require: true
+    },
+    currentPage: {
+      type: Number,
+      require: true
+    }
   }
 })
 </script>
@@ -86,11 +130,13 @@ export default defineComponent({
       </div>
     </div>
     <div>
-      <ul class="flex flex-row nav">
-        <div v-for="n in totalPage">
-          <li class="liPaging flex justify-center items-center cursor-pointer" :class="{ active: selectPage(n) }" @click="setPage(n)">{{ n }}</li>
-        </div>
-      </ul>
+      <el-pagination
+      :page-size="pageSize"
+      :total="totalItems"
+      :current-page.sync="currentPage"
+      @current-change="handlePageChange"
+      @click="setPage(Number(currentPage))"
+    />
     </div>
     <Footer />
   </div>
