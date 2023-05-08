@@ -8,7 +8,8 @@ import { fillterStore2 } from '../stores/fillter2'
 import { cart } from '../stores/cart'
 import IconAddToCart from '@/components/icons/IconAddToCart.vue';
 import IconAddToCart2 from '@/components/icons/IconAddToCart2.vue';
-import IconOutOfStock from '@/components/icons/IconOutOfStock.vue'
+import IconOutOfStock from '@/components/icons/IconOutOfStock.vue';
+import Footer from '@/components/Footer.vue';
 export default defineComponent({
     name: 'Search2',
     components: {
@@ -16,7 +17,8 @@ export default defineComponent({
         Navigation,
         IconAddToCart,
         IconAddToCart2,
-        IconOutOfStock
+        IconOutOfStock,
+        Footer
     },
     computed: {
         ...mapState(fillterStore2, {
@@ -286,6 +288,7 @@ export default defineComponent({
               </div>
             </ul>
         </div>
+        <Footer />
     </div>
 </template>
 <style lang="scss">

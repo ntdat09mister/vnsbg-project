@@ -6,12 +6,14 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["node"]
+    "types": ["node"],
+    "allowJs": true
   },
 
   "references": [
     {
       "path": "./tsconfig.config.json"
     }
-  ]
+  ],
+  
 }

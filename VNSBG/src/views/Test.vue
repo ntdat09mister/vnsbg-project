@@ -18,23 +18,9 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="form">
-        <div class="username">
-            <Username />
-        </div>
-        <div class="password">
-            <Password />
-        </div>
-        <div class="button-sign">
-            <ButtonSignIn />
-        </div>
-        <div class="comment">
-            <Comment />
-        </div>
-        <div class="tst">
-            <Product />
-        </div>
-    </div>
+    <button onclick="document.getElementById('srcImg').src='https://gamek.mediacdn.vn/133514250583805952/2021/9/26/photo-1-1632639337166965564522.jpg'">Img 1</button>
+    <img id="srcImg" src="https://i.vietgiaitri.com/2022/1/11/netizen-khong-tin-noi-voi-anh-chua-day-thi-cua-gai-xinh-lam-dong-849-6262894.jpg" alt="">
+    <button onclick="document.getElementById('srcImg').src='https://i.vietgiaitri.com/2022/1/11/netizen-khong-tin-noi-voi-anh-chua-day-thi-cua-gai-xinh-lam-dong-849-6262894.jpg'">Img 2</button>
 </template>
 
 <style>
