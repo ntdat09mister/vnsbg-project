@@ -1,5 +1,5 @@
 # vnsbg-project
-create db : docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=123456a@' -e 'MSSQL_PID=Express' --name sql-server-db -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
+create db : docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=123456a@" -e "MSSQL_PID=Express" --name sql-server-db -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 DB: SQL SERVER
 DDL Table
 -- master.dbo.cart definition
