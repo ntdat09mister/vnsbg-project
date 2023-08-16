@@ -103,7 +103,7 @@ export default defineComponent({
     <div class="flex flex-col justify-between items-center">
       <div class="banner">
         <a href="#"><img
-            src="https://1.bp.blogspot.com/-iJd0eLfRaqE/YIMzMGF1HRI/AAAAAAAAAPY/3dashLBXrSARgwkyMSyWU06pYmIGx863wCLcBGAsYHQ/w1200-h630-p-k-no-nu/20210424_035030.jpg"
+            src="https://cdn2.cellphones.com.vn/690x300,webp,q100/https://dashboard.cellphones.com.vn/storage/fold-flip-5-sliding.png"
             alt="gaixinhTQ"></a>
       </div>
       <h3>Gái xinh nhất trong tuần</h3>
