@@ -17,7 +17,7 @@ FROM adoptopenjdk/openjdk11:alpine-jre
 WORKDIR /app
 
 # Copy file JAR from stage build to stage runtime
-COPY --from=build /app/target/*.jar /app/danny-store-1.0-SNAPSHOT.jar
+COPY --from=build /app/target/*.jar /app/vnsbg-1.0-SNAPSHOT.jar
 
 # Run service
-ENTRYPOINT ["java", "-jar", "/app/danny-store-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/app/vnsbg-1.0-SNAPSHOT.jar"]
